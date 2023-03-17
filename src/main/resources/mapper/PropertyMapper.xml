@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.springboot_houseinfo.mapper.PropertyMapper">
+    <resultMap type="com.example.springboot_houseinfo.pojo.Property" id="PropertyResult">
+        <id property="id" column=""/>
+        <result column="name" property="name"/>
+        <result column="address"   property="address"/>
+        <result column="processingTime"   property="processingTime"/>
+        <result column="number"   property="number"/>
+        <result column="cases"   property="cases"/>
+        <result column="stand"   property="stand"/>
+        <result column="unitNumber"   property="unitNumber"/>
+        <result column="typeOfRight"   property="typeOfRight"/>
+        <result column="natureOfRight"   property="natureOfRight"/>
+        <result column="purpose"   property="purpose"/>
+        <result column="usableArea"   property="usableArea"/>
+        <result column="coveredArea"   property="coveredArea"/>
+        <result column="structure"   property="structure"/>
+        <result column="totalFloors"   property="totalFloors"/>
+        <result column="storyNumber"   property="storyNumber"/>
+        <result column="privateUseArea"   property="privateUseArea"/>
+        <result column="exclusiveAcreage"   property="exclusiveAcreage"/>
+        <result column="mjft"   property="mjft"/>
+        <result column="exclusiveFloorSpace"   property="exclusiveFloorSpace"/>
+        <result column="apportionedFloorSpace"   property="apportionedFloorSpace"/>
+        <result column="registrationTime"   property="registrationTime"/>
+        <result column="lifeSpan"   property="lifeSpan"/>
+        <result column="abbreviation"   property="abbreviation"/>
+    </resultMap>
+    <!--  根据id查询全部信息-->
+    <select id="findPropertys" resultType="com.example.springboot_houseinfo.pojo.Property">
+        SELECT *
+        FROM property
+    </select>
+
+    <!--添加-->
+    <!-- 添加简历信息-->
+    <insert id="insertProperty">
+        INSERT INTO property
+        VALUES (default , #{name}, #{address}, #{processingTime}, #{number}, #{cases}, #{stand}, #{unitNumber},
+                #{typeOfRight}, #{natureOfRight}, #{purpose}, #{usableArea}, #{coveredArea},
+                #{structure}, #{totalFloors}, #{storyNumber}, #{privateUseArea}, #{exclusiveAcreage},
+                #{mjft}, #{exclusiveFloorSpace}, #{apportionedFloorSpace}, #{registrationTime}, #{lifeSpan},
+                #{abbreviation})
+    </insert>
+
+
+    <!--    &lt;!&ndash; 修改更新简历信息名字 &ndash;&gt;-->
+    <update id="updateProperty">
+        UPDATE property
+        <set>
+            <if test="name!=null and name!=''">name = #{name},</if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+
+
+
+    <!--    &lt;!&ndash;  根据id，删除简历信息&ndash;&gt;-->
+    <delete id="deleteProperty">
+        DELETE
+        FROM property
+        WHERE id = #{id}
+    </delete>
+
+</mapper>
