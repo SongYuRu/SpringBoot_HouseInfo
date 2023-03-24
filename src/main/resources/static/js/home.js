@@ -1,5 +1,5 @@
 ﻿var pageNum = 1;
-var pageSize = 4;
+var pageSize = 10;
 var totalPage = 0;
 var totalCount = 0;
 var deleteRow = null;
@@ -43,7 +43,6 @@ $(function () {
                     "registrationTime": $("#registrationTime").val(),
                     "lifeSpan": $("#lifeSpan").val(),
                     "abbreviation": $("#abbreviation").val(),
-
 
                 },
                 statusCode: {

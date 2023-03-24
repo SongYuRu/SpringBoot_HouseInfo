@@ -31,8 +31,9 @@
     </resultMap>
     <!--  根据id查询全部信息-->
     <select id="findPropertys" resultType="com.example.springboot_houseinfo.pojo.Property">
-        SELECT *
-        FROM property
+       SELECT ROW_NUMBER() OVER(ORDER BY a.id)
+'编号'    ,a.*
+       FROM (SELECT *FROM property) a
     </select>
 
     <!--添加-->
